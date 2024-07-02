@@ -1,0 +1,51 @@
+{block content}
+    <h1 style="display: none" n:block="title">Portfolio</h1>
+
+    <section class="projectsBody">
+        <article class="projectArticle" n:foreach="$projects as $project">
+            <h1>{$project->title}</h1>
+
+            <p>{$project->content}</p>
+
+            <h3>Použité jazyky: {$project->ref("languages")->language}</h3>
+
+            <a href="{$project->link}" target="_blank" rel="noreferrer noopener">Odkaz na GitHub</a>
+        </article>
+    </section>
+
+    <div class="pagination">
+        {if $page > 1}
+            <a n:href="default, 1">První</a>
+            &nbsp;|&nbsp;
+            <a n:href="default, $page - 1">Předchozí</a>
+            &nbsp;|&nbsp;
+        {/if}
+
+        Stránka {$page} z {$lastPage}
+
+        {if $page < $lastPage}
+            &nbsp;|&nbsp;
+            <a n:href="default, $page + 1">Další</a>
+            &nbsp;|&nbsp;
+            <a n:href="default, $lastPage">Poslední</a>
+        {/if}
+    </div>
+
+    <style>
+        .projectArticle{
+            background-color: lime;
+            display: flex;
+            margin-bottom: 10px;
+            padding: 15px;
+            flex-direction: column;
+        }
+
+        .projectsBody{
+            display: flex;
+            gap: 10px;
+        }
+
+        .pagination{
+            text-align: center;
+        }
+    </style>

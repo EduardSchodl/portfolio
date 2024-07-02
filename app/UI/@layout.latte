@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{ifset title}{include title|stripHtml} {else} Webpage {/ifset}</title>
+	<link rel="stylesheet" href="{$basePath}/styles/css.css">
+	<link rel="stylesheet" href="{$basePath}/styles/contacts.css">
+</head>
+
+<body>
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	<header>
+		<div>
+			<h1 id="title">Eduard Schödl</h1>
+			<p id="title">Software developer</p>
+		</div>
+
+		<nav>
+			<ul class="navList">
+				<li class="listItems"><a n:class="$presenter->isLinkCurrent('Home:') ? 'active'" aria-current="page" n:href="Home:">Hlavní stránka</a></li>
+				<li class="listItems"><a n:class="$presenter->isLinkCurrent('Portfolio:') ? 'active'" aria-current="page" n:href="Portfolio:">Portfolio</a></li>
+				<li class="listItems"><a n:class="$presenter->isLinkCurrent('About:') ? 'active'" aria-current="page" n:href="About:">O mně</a></li>
+				<li class="listItems"><a n:class="$presenter->isLinkCurrent('Contact:') ? 'active'" aria-current="page" n:href="Contact:">Kontakt</a></li>
+			</ul>
+		</nav>
+	</header>
+
+
+	{include content}
+
+	{block scripts}
+	<script src="https://unpkg.com/nette-forms@3/src/assets/netteForms.js"></script>
+	{/block}
+</body>
+</html>

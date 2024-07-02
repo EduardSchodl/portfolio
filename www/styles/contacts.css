@@ -1,0 +1,15 @@
+img{
+    width: 150px;
+    height: 150px;
+    margin-right: 50px;
+}
+
+address{
+    display: flex;
+    background-color: lime;
+    padding: 10px;
+}
+
+*{
+    font-style: normal;
+}
